@@ -1,0 +1,18 @@
+﻿@page
+@model IdentityAuthenticationWebApp.Pages.Admin.UsersManager.DeleteModel
+@{
+    ViewData["Title"] = "Delete User";
+}
+<form method="post">
+    <div>
+        <label asp-for="SelectedUser"></label>
+        <div>
+            <select asp-for="SelectedUser" asp-items="Model.Users">
+                <option></option>
+            </select>
+        </div>
+        <span asp-validation-for="SelectedUser" class="text-danger"></span>
+    </div>
+    <input type="hidden" name="email" value="johndoe@email.com" />
+    <button type="submit">Delete User</button>
+</form>

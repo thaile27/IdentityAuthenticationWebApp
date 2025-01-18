@@ -1,0 +1,44 @@
+﻿@page
+@model IdentityAuthenticationWebApp.Pages.Admin.UsersManager.IndexModel
+@{
+    ViewData["Title"] = "Users Manager";
+}
+
+<h1>Users Manager</h1>
+
+<table class="table-striped table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.UsersWithRoles)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>
+                    @if (user.Roles.Any())
+                    {
+                        @string.Join(", ", user.Roles)
+                    }
+                    else
+                    {
+                        <span>No Roles Assigned</span>
+                    }
+                </td>
+                <td>
+                    <a class="text-danger text-decoration-none" asp-page="/Admin/UsersManager/Delete">
+                        X
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

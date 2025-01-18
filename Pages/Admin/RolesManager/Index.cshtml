@@ -1,0 +1,22 @@
+﻿@page
+@model IdentityAuthenticationWebApp.Pages.Admin.RolesManager.IndexModel
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<div class="mb-3">
+    <a asp-page="/RolesManager/Create">New</a>
+    <a asp-page="/RolesManager/Assign">Assign</a>
+</div>
+@if (Model.Roles.Any())
+{
+    <h4>Roles</h4>
+    <table class="table">
+        @foreach (var role in Model.Roles)
+        {
+            <tr>
+                <td>@role.Name</td>
+            </tr>
+        }
+    </table>
+}
