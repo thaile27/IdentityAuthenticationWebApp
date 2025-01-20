@@ -35,17 +35,17 @@ namespace IdentityAuthenticationWebApp
             });
 
             // Authorizing folders with the AuthorizeFolder method when using AddRazorPages() 
-            builder.Services.AddAuthorization(options =>
-            {
-                options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-                options.AddPolicy("AdminOrStaff", policy => policy.RequireRole("Admin", "Staff"));
-            });
+            //builder.Services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+            //    options.AddPolicy("AdminOrStaff", policy => policy.RequireRole("Admin", "Staff"));
+            //});
 
-            builder.Services.AddRazorPages(options =>
-            {
-                options.Conventions.AuthorizeFolder("/Admin", "AdminOnly");
-                options.Conventions.AuthorizeFolder("/Staff", "AdminOrStaff");
-            });
+            //builder.Services.AddRazorPages(options =>
+            //{
+            //    options.Conventions.AuthorizeFolder("/Admin", "AdminOnly");
+            //    options.Conventions.AuthorizeFolder("/Staff", "AdminOrStaff");
+            //});
 
             var app = builder.Build();
 

@@ -26,24 +26,24 @@ namespace IdentityAuthenticationWebApp.Pages.Admin.UsersManager
         {
             await GetOptions();
         }
-        public async Task<IActionResult> OnPostAsync(string email)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(SelectedUser))
             {
                 return BadRequest("Email is required.");
             }
 
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByEmailAsync(SelectedUser);
             if (user == null)
             {
-                return NotFound($"User with email '{email}' not found.");
+                return NotFound($"User with email '{user}' not found.");
             }
 
             var result = await _userManager.DeleteAsync(user);
 
             if (result.Succeeded)
             {
-                return Content($"User with email '{email}' successfully deleted.");
+                return Content($"User with email '{user}' successfully deleted.");
             }
 
             foreach (var error in result.Errors)
